@@ -1,3 +1,4 @@
+require("dotenv").config()
 const dbConf = require('./dbConf');
 
 const environment = process.env.NODE_ENV || 'dev';
