@@ -1,4 +1,5 @@
 const express = require('express');
+const connection = require('./connection');
 const app = express();
 const port = 3000;
 
@@ -9,7 +10,16 @@ app.post('/', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.send('READ');
+    try {
+        const result = connection.query('SELECT * from students');
+        result.then(data => {
+            res.send(data.rows);
+        });
+        
+    } catch (err) {
+        console.error('Database query error:', err);
+        res.status(500).send('Database connection failed');
+    }
 });
 
 app.put('/', (req, res) => {
