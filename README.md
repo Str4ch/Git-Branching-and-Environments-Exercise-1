@@ -10,7 +10,7 @@ Express & nodemon.
 
 ```npm init -y```
 
-```npm install express```
+```npm install express pg```
 
 ```npm install --save-dev nodemon```
 
