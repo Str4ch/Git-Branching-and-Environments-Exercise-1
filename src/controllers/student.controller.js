@@ -1,4 +1,4 @@
-const connection = require('./connection');
+const connection = require('../connection');
 
 exports.createStudent = async function(studentObj){
     const {firstName, lastName, age, grade, email} = studentObj;

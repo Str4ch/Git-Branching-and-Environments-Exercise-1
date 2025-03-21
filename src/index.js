@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 
 const port = 3000;
 
-const studentRoute  = require('./student.route');
+const studentRoute  = require('./routes/student.route');
 
 const app = express();
 
