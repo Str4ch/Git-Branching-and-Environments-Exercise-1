@@ -1,15 +1,9 @@
-const { Pool } = require('pg');
 const dbConfig = require('../config/currentConfig.js');
+const { Sequelize } = require("sequelize");
 
-const connection = new Pool(dbConfig);
-
-connection.on('connect', () => {
-    console.log('Database connected successfully');
+const sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.password, {
+  host: dbConfig.host,
+  dialect: "postgres",
 });
 
-connection.on('error', (err) => {
-    console.error('Unexpected database error', err);
-    process.exit(-1);
-});
-
-module.exports = connection;
+module.exports = sequelize;
