@@ -1,23 +1,23 @@
 const express = require('express');
-const app = express();
+const bodyParser = require('body-parser');
+
 const port = 3000;
-const controller = require("./controller");
-app.use(express.json());
 
-app.post('/', async (req, res) => {
-    res.send(await controller.createStudent(req.body));
-});
+const studentRoute  = require('./student.route');
 
-app.get('/', async (req, res) => {
-    res.send(await controller.readStudent());
-});
+const app = express();
 
-app.put('/',async (req, res) => {
-    res.send(await controller.updateStudent(req.body));
-});
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+	extended: false
+}));
 
-app.delete('/', async (req, res) => {
-    res.send(await controller.deleteStudent(req.body.id));
+app.use("/student", studentRoute);
+
+app.get('/', (req, res) => {
+	res.json({
+		status: true
+	})
 });
   
 

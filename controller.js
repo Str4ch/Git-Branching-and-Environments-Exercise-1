@@ -3,7 +3,7 @@ const connection = require('./connection');
 exports.createStudent = async function(studentObj){
     const {firstName, lastName, age, grade, email} = studentObj;
     if(!firstName || !lastName || !age || !grade || !email) {
-        return 'All arguments are required: firstName, lastName, age, grade, email';
+        throw new Error('All arguments are required: firstName, lastName, age, grade, email');
     }
     try {
         connection.query(`INSERT INTO students (first_name,last_name, age, grade, email )
@@ -19,8 +19,6 @@ exports.readStudent = async function(){
         const result = connection.query('SELECT * from students');
         const data = await result.then();
         return data.rows;
-        //return await students;
-        
     } catch (err) {
         console.error('Database query error:', err);
         throw new Error('Database connection failed');
@@ -30,7 +28,7 @@ exports.readStudent = async function(){
 exports.updateStudent = async function (studentObj) {
     const {id, firstName, lastName, age, grade, email} = studentObj;
     if(!firstName || !lastName || !age || !grade || !email || !id) {
-        return 'All arguments are required: firstName, lastName, age, grade, email, id';
+        throw new Error('All arguments are required: firstName, lastName, age, grade, email, id');
     }
     try {
         connection.query(`UPDATE students 
@@ -46,7 +44,7 @@ exports.updateStudent = async function (studentObj) {
 exports.deleteStudent = async function (studentId) {
     const id = studentId;
     if(!id){
-        return 'Id is required';
+        throw new Error('d is required');
     }
     try {
         connection.query(`DELETE FROM students
