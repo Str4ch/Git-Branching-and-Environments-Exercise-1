@@ -2,3 +2,4 @@
 node_modules/
 config/dbConf.js
 .env
+.DS_Store

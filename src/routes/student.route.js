@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
       message: 'Students read successfully!'
     });
   } catch (err) {
-    res.json({
+    res.status(500).json({
       students: null,
       status: err.code || err.statusCode || 500,
       message: err.message || 'Something went wrong while reading item from DB!'
@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
       message: msg
     })
   } catch (err) {
-    res.json({
+    res.status(500).json({
       status: err.code || err.statusCode || 500,
       message: err.message || 'Something went wrong while creating new item!'
     });
@@ -47,7 +47,7 @@ router.put('/', async (req, res) => {
       message: msg
     });
   } catch (err) {
-    res.json({
+    res.status(500).json({
       status: err.code || err.statusCode || 500,
       message: err.message || 'Something went wrong while updating item hash!'
     });
@@ -63,7 +63,7 @@ router.delete('/', async (req, res) => {
         message: msg
       });
     } catch (err) {
-      res.json({
+      res.status(500).json({
         status: err.code || err.statusCode || 500,
         message: err.message || 'Something went wrong while reading item from DB!'
       });
