@@ -1,6 +1,6 @@
 const dbConfigs = {
     dev: {
-        user: 'dev',
+        user: 'postgres',
         host: 'localhost',
         database: 'students_db_dev',
         password: 'Dbpass2',
